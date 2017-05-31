@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Psychic Game</title>
+  </head>
+  <body>
+
+    <h1>The Psychic Game</h1>
+
+      <h2>Try to guess the letter that the computer is thinking of.  Type in a letter now.</h2>
+
+      <br>
+
+      <h3>Wins: <span id="wins">0</span></h3>
+
+      <h3>Loses: <span id="losses">0</span></h3>
+
+      <h3>Guesses Left: <span id="guessleft">0</span></h3>
+
+      <h3>Your Guesses So Far: <span id="guesssofar">0</span></h3>
+
+ 
+       <script type = "text/javascript">
+
+      
+      var wins = 0;
+      var losses = 0;
+      var guesses = 0;
+      var guessesLeft = 9;
+      var guessedLetters = [];
+      var computerGuess;
+      // var letterToGuess = null;
+
+      window.onload = function(event){
+        var options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; 
+            computerGuess = options[Math.floor(Math.random() * options.length)];
+        console.log("Computer guessed: " + computerGuess);
+
+
+
+      document.onkeyup = function(event){
+        var userLetter = event.key; 
+        console.log(event.key);
+        if (userLetter == computerGuess) {
+          console.log(++wins);
+          console.log("you are psychic!")
+
+          alert("You got it...you are psychic!  Let's play again!")
+
+        var elem = document.getElementById("wins");
+          elem.innerHTML = wins;
+          console.log(elem.innerHTML);
+
+         computerGuess = options[Math.floor(Math.random() * options.length)];
+         console.log("Computer guessed: " + computerGuess);
+        } 
+
+        else {
+          console.log("try again");
+          console.log(--guessesLeft);
+          console.log(++guesses);
+
+          if (guessesLeft == 0){ 
+            guesses = 0;
+            guessesLeft = 9;
+            losses++;
+
+            var elem = document.getElementById("losses");
+          elem.innerHTML = losses;
+          console.log(elem.innerHTML);
+
+          alert("You lost...try again!")
+
+            computerGuess = options[Math.floor(Math.random() * options.length)];
+            console.log("Computer guessed: " + computerGuess);
+          }
+
+          var elem = document.getElementById("guesssofar");
+          elem.innerHTML = guesses;
+          console.log(elem.innerHTML);
+
+          var elem = document.getElementById("guessleft");
+          elem.innerHTML = guessesLeft;
+          console.log(elem.innerHTML);
+
+        }
+
+      }
+
+    }
+
+        // var random = Math.random();
+        // var len = options.length;
+        // var pre_index = random * len;
+        // var index = Math.floor(pre_index);
+        // var letter = options[index];
+
+        // console.log("random value: " + random);
+        // console.log("len: " + len);
+        // console.log("pre_index (len * random value): " + pre_index);
+        // console.log("index: " + index);
+        // console.log("letter: " + letter);
+        
+     
+
+
+        //   var winsText = document.getElementById("wins")
+        //   var losesText = document.getElementById("loses")
+        //   var tiesText = document.getElementById("ties")
+
+        //  winsText.textContent = wins;
+        //  losesText.textContent = lose;
+        //  tiesText.textContent = tie;
+
+
+
+        // console.log ("user guess " + event.key)
+        // console.log ("computer guess " + computerGuess)
+        // console.log ("wins " + wins)
+        // console.log ("loses " + lose)
+               
+
+    
+   
+    </script>
+    
+  </body>
+</html>
